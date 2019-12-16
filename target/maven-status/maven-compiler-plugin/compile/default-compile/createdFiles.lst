@@ -1,0 +1,17 @@
+hr/ibs/bank/api/KreditApi.class
+hr/ibs/bank/dao/KreditDao.class
+hr/ibs/bank/repo/KreditRepo.class
+hr/ibs/bank/AppCORSFilter.class
+hr/ibs/bank/WebAppInitializer.class
+hr/ibs/bank/dao/PlanOtplate.class
+hr/ibs/bank/service/KreditService.class
+hr/ibs/bank/dao/CrudDao.class
+hr/ibs/bank/repo/PlanOtplateRepo.class
+hr/ibs/bank/dto/Kredit.class
+hr/ibs/bank/service/DataService.class
+hr/ibs/bank/dto/BaseEntity.class
+hr/ibs/bank/dto/PlanOtplate.class
+hr/ibs/bank/dao/CrudDaoImpl.class
+hr/ibs/bank/CORSConfig.class
+hr/ibs/bank/api/HalloPayroll.class
+main/java/hr/ibs/bank/BankApplication.class
