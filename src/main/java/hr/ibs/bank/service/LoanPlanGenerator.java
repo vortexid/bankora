@@ -1,27 +1,27 @@
-package hr.inforbis.bank.service.bank;
+package hr.ibs.bank.service;
 
-import hr.inforbis.bank.dao.bank.LoanContractDao;
-import hr.inforbis.bank.dto.bank.LoanContract;
-import hr.inforbis.bank.dto.bank.LoanPaymentPlan;
-import hr.inforbis.bank.helpers.MathHelpers;
+import hr.ibs.bank.api.Zahtjev;
+import hr.ibs.bank.dao.KreditDao;
+import hr.ibs.bank.dto.Kredit;
+import hr.ibs.bank.dto.PlanOtplate;
+import hr.ibs.bank.helpers.MathHelpers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.time.LocalDate;
-
 
 @Service
 public class LoanPlanGenerator {
 
     @Autowired
-    LoanContractDao loanContractDao;
+    KreditDao loanContractDao;
 
-    LoanContract contract;
+    Kredit contract;
 
-    public LoanContract generatePlan(LoanContract contract) {
+    public Kredit generatePlan(Zahtjev contract) {
 
-        Double K = contract.getAmount().setScale(2).doubleValue();
-        Double p = contract.getInterestRate().doubleValue();
-        int n = contract.getTermYears().intValue()*12;
+        Double K = contract.getIznos();
+        Double p = contract.getKamata();
+        int n = contract.getBroj_godina() *12;
         Double a = 0.0;
 
         var r = (p / 100.0) * (1.0 / 12.0);
@@ -29,6 +29,13 @@ public class LoanPlanGenerator {
         a = Payment(K, r, n);
 
         Double i = 0.0;
+        Kredit kredit = new Kredit();
+        Double kamate = 0.0;
+
+        kredit.setAnuitet(a);
+        kredit.setBroj_godina(contract.getBroj_godina().doubleValue());
+        kredit.setIznos(contract.getIznos());
+        kredit.setKamata(p);
 
         Double rK = K;
 
@@ -36,30 +43,34 @@ public class LoanPlanGenerator {
         date = LocalDate.of(date.getYear(),date.getMonth(), date.getDayOfMonth());
 
         for(Double per=0.0;per<n;per++) {
-             i = Interes(K, a, (p / 100.0) * (1.0 / 12.0), per);
 
-            LoanPaymentPlan plan = new LoanPaymentPlan();
-            plan.setDueDate(date);
-            plan.setPaymentNo((int)(per + 1));
-            plan.setPayment(MathHelpers.RoundDouble(a,2));
-            plan.setInteres(MathHelpers.RoundDouble(i,2));
-            plan.setBaseLoan(MathHelpers.RoundDouble(plan.getPayment()-plan.getInteres(),2));
+            i = Interes(K, a, (p / 100.0) * (1.0 / 12.0), per);
+
+            PlanOtplate plan = new PlanOtplate();
+            plan.setDospjece(date);
+            plan.setNum(per.intValue() + 1);
+            plan.setAnuitet(MathHelpers.RoundDouble(a,2));
+            plan.setKamata(MathHelpers.RoundDouble(i,2));
+            plan.setGlavnica(MathHelpers.RoundDouble(plan.getAnuitet()-plan.getKamata(),2));
 
             rK = MathHelpers.RoundDouble(rK - (a-i),2);
 
             if(rK<1.0) rK = 0.0;
 
-            plan.setRestBalance(rK);
+            plan.setOstatak(rK);
 
-            contract.getPaymentPlan().add(plan);
+            kredit.getPlanOtplate().add(plan);
 
             date = date.plusMonths(1);
+
+            kamate += MathHelpers.RoundDouble(i,2);
+
+            kredit.getPlanOtplate().add(plan);
         }
 
-        loanContractDao.add(contract);
+        kredit.setKamate(kamate);
 
-
-        return contract;
+        return kredit;
     }
 
 

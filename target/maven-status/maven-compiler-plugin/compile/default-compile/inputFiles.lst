@@ -1,6 +1,5 @@
 /Users/dvirovec/Projects/jdev/bankora/src/main/java/hr/ibs/bank/AppCORSFilter.java
 /Users/dvirovec/Projects/jdev/bankora/src/main/java/hr/ibs/bank/dto/BaseEntity.java
-/Users/dvirovec/Projects/jdev/bankora/src/main/java/hr/ibs/bank/api/HalloPayroll.java
 /Users/dvirovec/Projects/jdev/bankora/src/main/java/hr/ibs/bank/dto/PlanOtplate.java
 /Users/dvirovec/Projects/jdev/bankora/src/main/java/hr/ibs/bank/repo/PlanOtplateRepo.java
 /Users/dvirovec/Projects/jdev/bankora/src/main/java/hr/ibs/bank/dto/Kredit.java
@@ -9,9 +8,14 @@
 /Users/dvirovec/Projects/jdev/bankora/src/main/java/hr/ibs/bank/dao/CrudDao.java
 /Users/dvirovec/Projects/jdev/bankora/src/main/java/hr/ibs/bank/WebAppInitializer.java
 /Users/dvirovec/Projects/jdev/bankora/src/main/java/hr/ibs/bank/repo/KreditRepo.java
+/Users/dvirovec/Projects/jdev/bankora/src/main/java/hr/ibs/bank/api/Zahtjev.java
 /Users/dvirovec/Projects/jdev/bankora/src/main/java/hr/ibs/bank/service/KreditService.java
+/Users/dvirovec/Projects/jdev/bankora/src/main/java/hr/ibs/bank/helpers/TaxHelpers.java
+/Users/dvirovec/Projects/jdev/bankora/src/main/java/hr/ibs/bank/service/LoanPlanGenerator.java
+/Users/dvirovec/Projects/jdev/bankora/src/main/java/hr/ibs/bank/helpers/MathHelpers.java
 /Users/dvirovec/Projects/jdev/bankora/src/main/java/hr/ibs/bank/BankApplication.java
 /Users/dvirovec/Projects/jdev/bankora/src/main/java/hr/ibs/bank/dao/KreditDao.java
 /Users/dvirovec/Projects/jdev/bankora/src/main/java/hr/ibs/bank/api/KreditApi.java
 /Users/dvirovec/Projects/jdev/bankora/src/main/java/hr/ibs/bank/service/DataService.java
+/Users/dvirovec/Projects/jdev/bankora/src/main/java/hr/ibs/bank/helpers/CryptHelpers.java
 /Users/dvirovec/Projects/jdev/bankora/src/main/java/hr/ibs/bank/dao/PlanOtplate.java

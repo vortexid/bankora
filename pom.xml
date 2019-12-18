@@ -15,7 +15,7 @@
 	<description>Oracle/Java project for Spring Boot</description>
 
 	<properties>
-		<java.version>8</java.version>
+		<java.version>11</java.version>
 	</properties>
 
 
@@ -39,12 +39,18 @@
 		</dependency>
 
 		<dependency>
+			<groupId>org.postgresql</groupId>
+			<artifactId>postgresql</artifactId>
+			<version>42.2.9</version>
+		</dependency>
+
+		<!--<dependency>
 			<groupId>com.oracle.ojdbc</groupId>
 			<artifactId>ojdbc10</artifactId>
 			<version>19.3.0.0</version>
 		</dependency>
 
-		<!--<dependency>
+		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-rest</artifactId>
 		</dependency>-->

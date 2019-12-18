@@ -7,6 +7,7 @@ import lombok.Setter;
 
 import javax.persistence.Entity;
 import javax.validation.constraints.Positive;
+import java.time.LocalDate;
 import java.util.Date;
 
 @Entity
@@ -20,7 +21,7 @@ public class PlanOtplate extends BaseEntity {
     Integer num;
 
     @NonNull
-    Date dospjece;
+    LocalDate dospjece;
 
     @Positive
     @NonNull
