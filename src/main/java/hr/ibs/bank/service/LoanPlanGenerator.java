@@ -24,7 +24,7 @@ public class LoanPlanGenerator {
         int n = contract.getBroj_godina() *12;
         Double a = 0.0;
 
-        var r = (p / 100.0) * (1.0 / 12.0);
+        Double r = (p / 100.0) * (1.0 / 12.0);
 
         a = Payment(K, r, n);
 
@@ -75,13 +75,13 @@ public class LoanPlanGenerator {
 
 
     private Double Interes(Double K, Double a, Double rate, Double per) {
-        var r = Math.pow(1.0 + rate, per);
+        Double r = Math.pow(1.0 + rate, per);
         return (K * r * rate) - (a * (r - 1.0));
     }
 
 
     private Double Payment(Double K, Double rate, Integer n) {
-        var r1 = Math.pow( 1.0 + rate, n);
+        Double r1 = Math.pow( 1.0 + rate, n);
         return rate / (r1 - 1.0) * (K * r1);
     }
 
